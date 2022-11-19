@@ -28,8 +28,8 @@ client.commands = new Collection();
 */
 const commandFiles = readdirSync(join(__dirname, "commands")).filter((file) => file.endsWith(".js"));
 for (const file of commandFiles) {
-  const command = require(join(__dirname, "commands", `${file}`));
-  client.commands.set(command.name, command);
+    const command = require(join(__dirname, "commands", `${file}`));
+    client.commands.set(command.name, command);
 }
 
 /**
@@ -94,15 +94,6 @@ client.on("messageCreate", async (message) => {
         client.commands.find((cmd) => cmd.aliases && cmd.aliases.includes(commandName));
 
     if (command) {
-        // if (!command.anychannel && message.channel.id != botChannelId) {
-        //     if (!false) return message.reply(`Use <#${botChannelId}> else Nub`);
-            
-        // }
-        // return message.reply(`Use <#${botChannelId}> else Nub`).then(msg => {
-        //         msg.delete({
-        //           timeout: 12000
-        //         });
-        //       });
         return command.execute(message, args);
     }
 });
