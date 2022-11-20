@@ -1,3 +1,6 @@
+
+const snipeDB = new Map();
+
 module.exports = {
     msToTime(ms) {
         let seconds = (ms / 1000).toFixed(1);
@@ -13,4 +16,6 @@ module.exports = {
     escapeRegex(string) {
         return string.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
     },
+
+    snipeDB
 }

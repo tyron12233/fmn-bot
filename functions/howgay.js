@@ -8,6 +8,16 @@ function get_algorithomic_gay_count(input) {
     return 100
   }
 
+  // moy bading
+  if (input == "745126492765290557") {
+    return 169;
+  }
+
+  // won
+  if (input == "961818313221111830") {
+    return 1000000000000;
+  }
+
   if (input.match(/^[0-9]+$/))
     return (input.substring(6, 9) * input.substring(4, 12)) % 101
   //not a mention, returning random

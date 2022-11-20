@@ -13,13 +13,16 @@ module.exports = {
             message.react("🇦")
                 .then(() => message.react("🇪"))
                 .then(() => message.react("🇷"))
-                .then(() => message.react("🇺"));
-        } else if (message.content.toLOwerCase().includes("sam")) {
-            message.react("🇩")
-                .then(() => message.react("🇦"))
-                .then(() => message.react("🇩"))
-                .then(() => message.react("🇩"))
-                .then(() => message.react("🇾"));
+                .then(() => message.react("🇺"))
+                .catch(console.log);
+        } else if (message.content.toLowerCase().includes("sam")) {
+            message.react("🇰")
+                .then(() => message.react("🇴"))
+                .then(() => message.react("🇳"))
+                .then(() => message.react("🇹"))
+                .then(() => message.react("🇺"))
+                .then(() => message.react("🇱"))
+                .catch(console.log);
         }
     }
 }

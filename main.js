@@ -1,9 +1,9 @@
-const express = require('express');
-const app = express();
-const port = process.env.PORT || 3000;
+// const express = require('express');
+// const app = express();
+// const port = process.env.PORT || 3000;
 
-app.get('/', (req, res) => res.send('Hello World!'));
-app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));
+// app.get('/', (req, res) => res.send('Hello World!'));
+// app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));
 
 
 require('dotenv').config()
@@ -11,7 +11,7 @@ const { channel } = require("diagnostics_channel");
 const { Client, Collection, Intents, GatewayIntentBits, Events, MembershipScreeningFieldType, MessageReaction } = require("discord.js");
 const { readdirSync } = require("fs");
 const { join } = require("path");
-const { escapeRegex } = require("./utils");
+const { escapeRegex, snipeDB } = require("./utils");
 
 const TOKEN = process.env['TOKEN'];
 
@@ -107,6 +107,25 @@ client.on("messageCreate", async (message) => {
     if (command) {
         return await command.execute(message, args);
     }
+});
+
+client.on('messageDelete', (message) => {
+    // content is null or deleted embed
+    if (message.partial ||
+        (message.embeds.length && !message.content)) return;
+    if (message.author.bot) return; // Ignore bots deletion
+
+
+    snipeDB.set("snipe" + [message.channel.id],
+        {
+            author: message.author,
+            content: message.content,
+            createdAt: message.createdTimestamp,
+            image: message.attachments.first()
+                ? message.attachments.first().proxyURL
+                : null
+        }
+    );
 });
 
 client.on(Events.MessageReactionAdd, async (reaction, user) => {
