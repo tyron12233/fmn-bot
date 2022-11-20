@@ -24,6 +24,7 @@ module.exports = {
 
     let who = args[0];
     who = who ? who : `<@${message.author.id}>`;
+
     gay = get_algorithomic_gay_count(who)
     let description = `${who} is ${gay}% gay.`
     let embed = new EmbedBuilder()
