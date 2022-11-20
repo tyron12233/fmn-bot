@@ -14,6 +14,12 @@ module.exports = {
                 .then(() => message.react("🇪"))
                 .then(() => message.react("🇷"))
                 .then(() => message.react("🇺"));
+        } else if (message.content.toLOwerCase().includes("sam")) {
+            message.react("🇩")
+                .then(() => message.react("🇦"))
+                .then(() => message.react("🇩"))
+                .then(() => message.react("🇩"))
+                .then(() => message.react("🇾"));
         }
     }
 }

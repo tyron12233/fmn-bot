@@ -2,6 +2,12 @@ const { EmbedBuilder } = require("discord.js");
 
 function get_algorithomic_gay_count(input) {
   input = input.replace("<", "").replace(">", "").replace("@", "").replace("!", "").replace("&", "")
+
+  if (input == "676730768432562186") {
+    // special case for aeru bading
+    return 100
+  }
+
   if (input.match(/^[0-9]+$/))
     return (input.substring(6, 9) * input.substring(4, 12)) % 101
   //not a mention, returning random
