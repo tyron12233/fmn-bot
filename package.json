@@ -4,6 +4,7 @@
   "description": "FMN BOT",
   "main": "main.js",
   "dependencies": {
+    "@discordjs/voice": "^0.13.0",
     "cpu-stat": "^2.0.1",
     "discord": "^0.8.2",
     "discord.js": "^14.6.0",

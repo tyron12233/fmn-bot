@@ -3,7 +3,7 @@ const { channel } = require("diagnostics_channel");
 const { Client, Collection, Intents, GatewayIntentBits, Events, MembershipScreeningFieldType, MessageReaction } = require("discord.js");
 const { readdirSync } = require("fs");
 const { join } = require("path");
-const { escapeRegex, snipeDB } = require("./utils");
+const { escapeRegex } = require("./utils");
 
 const TOKEN = process.env['TOKEN'];
 
@@ -14,7 +14,8 @@ const client = new Client({
         GatewayIntentBits.GuildMessages,
         GatewayIntentBits.GuildMessageReactions,
         GatewayIntentBits.MessageContent,
-        GatewayIntentBits.GuildMembers
+        GatewayIntentBits.GuildMembers,
+        GatewayIntentBits.GuildVoiceStates
     ]
 });
 client.login(TOKEN);
@@ -84,6 +85,8 @@ client.on("messageCreate", async (message) => {
         return;
     }
 
+    message.guild.members.fetch()
+
     //TODO: Understand what this part does
     const [, matchedPrefix] = message.content.match(prefixRegex);
     const args = message.content.slice(matchedPrefix.length).trim().split(/ +/);
@@ -94,7 +97,7 @@ client.on("messageCreate", async (message) => {
         client.commands.find((cmd) => cmd.aliases && cmd.aliases.includes(commandName));
 
     if (command) {
-        return command.execute(message, args);
+        return await command.execute(message, args);
     }
 });
 

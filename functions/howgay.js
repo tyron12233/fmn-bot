@@ -14,7 +14,7 @@ module.exports = {
   usage: "Usage: " + `\`+%name% <@some g*h ppl>\``,
   async execute(message) {
     if (!message.content.startsWith(`+${this.name}`)) return;
-     const args = message.content.slice(this.name.length + 1).trim().split(/ +/);
+    const args = message.content.slice(this.name.length + 1).trim().split(/ +/);
 
     let who = args[0];
     who = who ? who : `<@${message.author.id}>`;
