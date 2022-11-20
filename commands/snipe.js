@@ -12,7 +12,10 @@ module.exports = {
         if (!snipe) return message.reply("There's nothing to snipe!")
 
         const embed = new EmbedBuilder()
-            .setAuthor(snipe.author.tag, snipe.author.avatarURL)
+            .setAuthor({
+                name: snipe.author.tag,
+                iconURL: snipe.author.avatarURL
+            })
             .setFooter(`#${message.channel.name}`)
             .setTimestamp(snipe.createdAt);
         snipe.content ? embed.setDescription(snipe.content) : null;
