@@ -142,3 +142,11 @@ client.on(Events.MessageReactionAdd, async (reaction, user) => {
         func.execute(reaction, user);
     });
 });
+
+
+/*
+* Prevents bot from crashing if exception occurs
+*/
+process.on('uncaughtException', function (error) {
+    console.log(error.stack);
+});
