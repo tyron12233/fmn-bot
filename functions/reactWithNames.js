@@ -16,9 +16,10 @@ module.exports = {
                 .then(() => message.react("🇺"))
                 .catch(console.log);
         } else if (message.content.toLowerCase().includes("won")) {
+
             message.react("w")
                 .then(() => message.react("🇴"))
-                .then(() => "")
+                .then(() => "🇳")
                 .catch(console.log)
         }
     }
