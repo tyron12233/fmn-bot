@@ -17,7 +17,7 @@ module.exports = {
                 .catch(console.log);
         } else if (message.content.toLowerCase().includes("won")) {
 
-            message.react("w")
+            message.react("🇼")
                 .then(() => message.react("🇴"))
                 .then(() => "🇳")
                 .catch(console.log)
