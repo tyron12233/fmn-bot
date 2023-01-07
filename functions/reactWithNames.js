@@ -33,6 +33,18 @@ module.exports = {
     name: "reactWithNames",
     description: "Reacts with the name on every message that contains this name",
     async execute(message) {
+        if (message.content.startsWith(`+clearReact`)) {
+            const args = message.content.slice('setReact'.length + 1).trim().split(/ +/);
+            if (args[0]) {
+                let reaction = reactionMap[args[0]];
+                if (reaction) {
+                    reactionMap[args[0]] = null;
+                    await message.reply("Reactions for " + args[0] + " has been cleared.");
+                    return;
+                }
+            }
+        }
+
         if (message.content.startsWith(`+setReact`)) {
             const args = message.content.slice('setReact'.length + 1).trim().split(/ +/);
 
