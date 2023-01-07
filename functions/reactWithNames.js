@@ -21,7 +21,7 @@ module.exports = {
                 .then(() => message.react("🇳"))
                 .catch(console.log)
         } else if (message.content.toLowerCase().includes("moy")) {
-            message.react("p")
+            message.react("🇵")
                 .then(() => message.react("🇺"))
                 .then(() => message.react("🇩"))
                 .then(() => message.react("🇦"))
